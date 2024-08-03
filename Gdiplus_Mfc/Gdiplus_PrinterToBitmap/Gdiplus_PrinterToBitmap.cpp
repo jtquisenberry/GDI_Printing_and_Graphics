@@ -67,6 +67,15 @@ int main()
 	// Draw a smaller rectangle
 	memDC.Rectangle(0, 0, 500, 500);
 
+
+	CImage Image001;
+	Image001.Attach(bitmap);
+	Image001.Save(L"D:/001.png", Gdiplus::ImageFormatPNG);
+
+
+
+
+
 	// Draw with Gdiplus::Graphics
 	// Draw green rectangles
 	graphics = new Gdiplus::Graphics(memDC);
@@ -75,6 +84,13 @@ int main()
 	graphics->DrawRectangle(pen, 150, 150, 401, 500);
 	graphics->DrawRectangle(pen, 50, 50, 501, 600);
 
+	CImage Image002;
+	Image002.Attach(bitmap);
+	Image002.Save(L"D:/002.png", Gdiplus::ImageFormatPNG);
+
+
+
+
 	// Print green rectangles
 	graphics2 = new Gdiplus::Graphics(PrinterDC->GetSafeHdc());
 	graphics2->DrawRectangle(pen, 50, 50, 200, 300);
@@ -82,21 +98,34 @@ int main()
 	graphics2->DrawRectangle(pen, 150, 150, 401, 500);
 	graphics2->DrawRectangle(pen, 50, 50, 501, 600);
 
+	CImage Image003;
+	Image003.Attach(bitmap2);
+	Image003.Save(L"D:/003.png", Gdiplus::ImageFormatPNG);
+
+
+
 	// Overlay the contents of PrinterDC to memDC
 	// Notice the first two arguments are 300, 300. This is to show where the printer bitmap overlaps the memory bitmap.
 	// The memDC contains green rectangles. The PrintDC is an empty rectangle. 
 	// The empty rectangle is overlaid onto the memDC.
 	memDC.BitBlt(300, 300, PrinterDC->GetDeviceCaps(HORZRES), PrinterDC->GetDeviceCaps(VERTRES), PrinterDC, 0, 0, SRCCOPY);
 	
-	// Write bitmap to PNG
-	CImage Image;
-	Image.Attach(bitmap);
-	Image.Save(L"D:/file.png", Gdiplus::ImageFormatPNG);
+	CImage Image004;
+	Image004.Attach(bitmap);
+	Image004.Save(L"D:/004.png", Gdiplus::ImageFormatPNG);
 
-	// Write bitmap2 to PNG
-	CImage Image2;
-	Image2.Attach(bitmap2);
-	Image2.Save(L"D:/file2.png", Gdiplus::ImageFormatPNG);
+
+
+
+	// Write bitmap 1 (from memory DC) to PNG
+	CImage Image005;
+	Image005.Attach(bitmap);
+	Image005.Save(L"D:/005.png", Gdiplus::ImageFormatPNG);
+
+	// Write bitmap 2 (from printer DC) to PNG
+	CImage Image006;
+	Image006.Attach(bitmap2);
+	Image006.Save(L"D:/006.png", Gdiplus::ImageFormatPNG);
 
 	// End printing
 	EndPage(hPrinterDC);
