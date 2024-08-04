@@ -49,6 +49,7 @@ int main()
 	// Create a new bitmap and size it based on the printer device capabilities.
 	CBitmap bitmap;
 	bitmap.CreateCompatibleBitmap(PrinterDC, PrinterDC->GetDeviceCaps(HORZRES), PrinterDC->GetDeviceCaps(VERTRES));
+	//bitmap.CreateCompatibleBitmap(PrinterDC, 1500, 1500);
 
 	// Insert the CBitmap into the memory device context
 	CBitmap* pOldBitmap = memDC.SelectObject(&bitmap);
