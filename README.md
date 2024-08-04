@@ -1,4 +1,4 @@
-# Windows GDI Graphics and Printing with MFC
+# Windows Graphics and Printing with GDI and GDI+
 
 This repository contains projects demonstrating the use of Windows GDI+ and GDI to draw bitmaps and write to a printer.
 
